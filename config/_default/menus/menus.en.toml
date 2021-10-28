@@ -11,24 +11,21 @@
     url = "/docs/user-interface/"
 
 [[docs]]
+    name = "External partners"
+    weight = 15
+    identifier = "external-partners"
+    url = "/docs/external-partners/"
+
+[[docs]]
     name = "Search strategies"
     weight = 20
     identifier = "search-strategies"
     url = "/docs/search-strategies/"
 
-[[docs]]
-  name = "Prologue"
-  weight = 100
-  identifier = "prologue"
-  url = "/docs/prologue/"
-
 [[main]]
   name = "Documentation"
-  url = "/docs/prologue/introduction/"
-# url = "/docs/1.0/prologue/introduction/"
-  weight = 60
-
-
+  url = "/docs/overview/introduction/"
+  weight = 10
 
 # [[footer]]
 #   name = "Privacy"
