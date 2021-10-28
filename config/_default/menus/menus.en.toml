@@ -4,15 +4,22 @@
     identifier = "overview"
     url = "/docs/overview/"
 
+
 [[docs]]
-    name = "User Interface"
-    weight = 15
-    identifier = "user-interface"
+  name = "Business models"
+  weight= 11
+  identifier = "business-models"
+  url = "/docs/business-models"
+
+[[docs]]
+    name = "Seller features"
+    weight = 12
+    identifier = "seller-features"
     url = "/docs/user-interface/"
 
 [[docs]]
     name = "External partners"
-    weight = 15
+    weight = 25
     identifier = "external-partners"
     url = "/docs/external-partners/"
 
