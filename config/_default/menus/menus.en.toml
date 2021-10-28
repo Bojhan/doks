@@ -1,25 +1,33 @@
 [[docs]]
+    name = "Overview"
+    weight = 10
+    identifier = "overview"
+    url = "/docs/overview/"
+
+[[docs]]
+    name = "User Interface"
+    weight = 15
+    identifier = "user-interface"
+    url = "/docs/user-interface/"
+
+[[docs]]
+    name = "Search strategies"
+    weight = 20
+    identifier = "search-strategies"
+    url = "/docs/search-strategies/"
+
+[[docs]]
   name = "Prologue"
-  weight = 10
+  weight = 100
   identifier = "prologue"
   url = "/docs/prologue/"
 
-[[docs]]
-  name = "Help"
-  weight = 60
-  identifier = "help"
-  url = "/docs/help/"
-
 [[main]]
-  name = "Docs"
+  name = "Documentation"
   url = "/docs/prologue/introduction/"
 # url = "/docs/1.0/prologue/introduction/"
-  weight = 10
+  weight = 60
 
-[[main]]
-  name = "Blog"
-  url = "/blog/"
-  weight = 20
 
 
 # [[footer]]
