@@ -7,7 +7,7 @@ lastmod: 2021-10-28T16:12:18+03:00
 draft: false
 menu:
   docs:
-    parent: ""
+    parent: "search-strategies"
 weight: 999
 toc: true
 ---
