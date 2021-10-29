@@ -1,6 +1,7 @@
 [build]
   publish = "public"
   functions = "functions"
+  command = "hugo --gc --minify"
 
 [build.environment]
   NODE_VERSION = "16.9.1"
@@ -8,18 +9,29 @@
 
 [context.production]
   command = "npm run build"
+  HUGO_version = "0.83.1"
+  HUGO_ENV = "production"
+  HUGO_ENABLEGITINFO = "true"
+
+[context.split1]
+  command = "hugo --gc --minify --enableGitInfo"
+
+[context.split1.environment]
+  HUGO_VERSION = "0.88.1"
+  HUGO_ENV = "production"
 
 [context.deploy-preview]
-  command = "npm run build -- -b $DEPLOY_PRIME_URL"
+  command = "hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL"
 
 [context.branch-deploy]
-  command = "npm run build -- -b $DEPLOY_PRIME_URL"
+  command = "hugo --gc --minify -b $DEPLOY_PRIME_URL"
+  HUGO_VERSION = "0.88.1"
 
 [context.next]
   command = "npm run build"
 
 [context.next.environment]
-  HUGO_ENV = "next"
+  HUGO_ENABLEGITINFO = "true"
 
 [dev]
   framework = "#custom"
@@ -28,3 +40,8 @@
   port = 8888
   publish = "public"
   autoLaunch = false
+
+[[redirects]]
+  from = "/npmjs/*"
+  to = "/npmjs/"
+  status = 200
