@@ -24,7 +24,10 @@
 
 blockquote {
   margin-bottom: 1rem;
-  font-size: 1.25rem;
-  border-left: 3px solid $gray-300;
+  padding-top: 1rem;
+  padding-bottom: 0.2rem;
+  padding-right: 1rem;
+  border-left: 4px solid $adevintamain;
+  background-color: #f6f4fd;
   padding-left: 1rem;
 }
