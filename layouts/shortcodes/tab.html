@@ -1,21 +1,9 @@
-{{ $tab := .Get "tabNum" }}
-{{ $tabID := print (.Parent.Get "tabID") $tab }}
-{{ $tabName := (print "tabName" $tab) }}
+<!-- Prefill title if not given as parameter -->
+{{ $title := default (printf "Tab %v" ( add $.Ordinal 1)) (.Get "title") }}
 
-{{ if eq $tab "1" }}
+<!-- store all tab info in dict tab -->
+{{ $tab := dict "title" $title }}
+{{ $tab = merge $tab (dict "content" (trim $.Inner "\n")) }}
 
-<div class="tab-pane fade show active" id="nav-{{ $tabID }}" role="tabpanel" aria-labelledby="nav-{{ $tabName }}">
-
-	{{ $.Inner | markdownify }}
-
-</div>
-
-{{ else }}
-
-<div class="tab-pane fade" id="tab{{ $tabID }}" role="tabpanel" aria-labelledby="nav-{{ $tabName }}">
-
-	{{ $.Inner | markdownify }}
-
-</div>
-
-{{ end }}
+<!-- add dict tab to parent's scratchpad -->
+{{- $.Parent.Scratch.SetInMap "tabs" (printf "%v" $.Ordinal) $tab -}}

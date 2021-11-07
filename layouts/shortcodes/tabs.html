@@ -1,31 +1,27 @@
-<nav>
-	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+<!-- Scratchpad gets populated through call to .Inner -->
+{{- .Inner -}}
 
-		{{ $tabTotal := .Get "tabTotal" }}
-		{{ range $i, $sequence := (seq $tabTotal) }}
+<nav class="nav nav-tabs" id="tabs-{{- $.Ordinal -}}" role="tablist">
+  {{- range $index, $element := $.Scratch.Get "tabs" -}}
+    <!-- Generate the IDs for the <a> and the <div> elements -->
+    {{- $tabid := printf "tab-%v-%v-tab" $.Ordinal $index | anchorize -}}
+    {{- $entryid := printf "tab-%v-%v" $.Ordinal $index | anchorize -}}
+    <a class="nav-item nav-link{{ if eq $index "0" }} active{{ end }}"
+      id="{{ $tabid }}" data-toggle="tab" href="#{{ $entryid }}" role="tab"
+      aria-controls="{{ $tabid }}" aria-selected="{{- cond (eq $index "0") "true" "false" -}}">
+      {{ index . "title" }}
+    </a>
+  {{- end -}}
+  </nav>
 
-		{{ $tabID := $.Get "tabID" }}
-		{{ $tabName := (print "tabName" $sequence) }}
-		{{ $tabHREF := (print "tab" $tabID $sequence) }}
-
-		{{ if eq $sequence 1 }}
-
-		<button class="nav-link active" id="nav-{{ $tabID }}-tab" data-bs-toggle="tab" data-bs-target="#nav-{{ $tabID }}" role="tab"
-		   aria-controls="nav-{{ $tabID }}" aria-selected="true">{{ $.Get $tabName }}</button>
-
-		{{ else }}
-
-		<button class="nav-link" id="nav-{{ $tabID }}" data-bs-toggle="tab" data-bs-target="#nav-{{ $tabID }}" role="tab"
-		   aria-controls="nav-{{ $tabID }}" aria-selected="false">{{ $.Get $tabName }}</button>
-
-		{{ end }}
-		{{ end }}
-
-	</div>
-</nav>
-
-<div class="tab-content" id="{{ $.Get "tabID" }}">
-
-{{ .Inner }}
-
+<!-- Inner content -->
+<div class="tab-content" id="tabs-{{- $.Ordinal -}}-content">
+  {{- range $index, $element := $.Scratch.Get "tabs" -}}
+    {{- $tabid := printf "tab-%v-%v-tab" $.Ordinal $index | anchorize -}}
+    {{- $entryid := printf "tab-%v-%v" $.Ordinal $index | anchorize -}}
+    <div class="tab-pane fade{{ if eq $index "0" }} show active{{ end }}"
+        id="{{ $entryid }}" role="tabpanel" aria-labelled-by="{{ $tabid }}">
+    {{- highlight (index . "content") "" "" -}}
+     </div>
+  {{ end }}
 </div>
