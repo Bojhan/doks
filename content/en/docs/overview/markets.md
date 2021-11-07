@@ -19,9 +19,9 @@ jajajja
 
 {{< tabs >}}
     {{< tab title = "Tab One" >}}
-Content in Tab 1
+      Content in Tab 1
     {{< /tab >}}
     {{< tab title = "Tab Two" >}}
-Content in Tab 2
+      Content in Tab 2
     {{< /tab >}}
 {{< /tabs >}}
